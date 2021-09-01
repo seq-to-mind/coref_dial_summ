@@ -1,5 +1,5 @@
 ## Introduction
-One implementation of the paper "Coreference Dialogue Summarization".
+One implementation of the paper "Coreference-Aware Dialogue Summarization".
 
 ## Package Requirements
 1. Pytorch==1.7.1

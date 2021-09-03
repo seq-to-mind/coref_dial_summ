@@ -9,7 +9,7 @@ One implementation of the paper "Coreference-Aware Dialogue Summarization".
 5. allennlp==2.6.0
 6. allennlp-models==2.6.0
 
-# Dialogue Coreference Resolution
+## Dialogue Coreference Resolution
 1. Download the off-the-shelf model: "allennlp-public-models/coref-spanbert-large-2021.03.10".
 2. One can obtain the corefernece resolution from the model with script: 
 3. For data post-processing, one can run the script:

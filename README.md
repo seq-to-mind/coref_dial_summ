@@ -16,3 +16,22 @@ One implementation of the paper "Coreference-Aware Dialogue Summarization".
 5. For end-to-end conversation samples construction with coreference information, please run or refer to the script: end2end_build_data.py
 6. Noted that the processed samples will be tokenized via the RoBERTa/BART sub-word tokenization.
 
+
+## Dialogue Coreference Resolution
+
+```
+@inproceedings{liu-etal-2021-coreference,
+    title = "Coreference-Aware Dialogue Summarization",
+    author = "Liu, Zhengyuan  and
+      Shi, Ke  and
+      Chen, Nancy",
+    booktitle = "Proceedings of the 22nd Annual Meeting of the Special Interest Group on Discourse and Dialogue",
+    month = jul,
+    year = "2021",
+    address = "Singapore and Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2021.sigdial-1.53",
+    pages = "509--519",
+}
+```
+

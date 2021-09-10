@@ -17,7 +17,7 @@ One implementation of the paper "Coreference-Aware Dialogue Summarization".
 6. Noted that the processed samples will be tokenized via the RoBERTa/BART sub-word tokenization.
 
 
-## Dialogue Coreference Resolution
+## Citation
 
 ```
 @inproceedings{liu-etal-2021-coreference,

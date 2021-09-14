@@ -10,12 +10,18 @@ One implementation of the paper "Coreference-Aware Dialogue Summarization".
 6. allennlp-models==2.6.0
 
 ## Dialogue Coreference Resolution
-1. Download the off-the-shelf model: "allennlp-public-models/coref-spanbert-large-2021.03.10".
-2. One can obtain the corefernece resolution from the model with script: dialogue_coreference.py
-4. For dialogue coreference resolution post-processing, one can call the function in the file: reading_and_writing_as_input_keep_SPAN.py
-5. For end-to-end conversation samples construction with coreference information, please run or refer to the script: end2end_build_data.py
-6. Noted that the processed samples will be tokenized via the RoBERTa/BART sub-word tokenization.
+1. Download the off-the-shelf model:  
+   "allennlp-public-models/coref-spanbert-large-2021.03.10"
+3. One can obtain the corefernece resolution from the model with script:  
+   ./dialogue_coreference/dialogue_coreference.py
+5. For dialogue coreference resolution post-processing, one can call the function in the file:  
+   ./dialogue_coreference/reading_and_writing_as_input_keep_SPAN.py
+7. For end-to-end conversation samples construction with coreference information, please run or refer to the script:  
+   ./dialogue_coreference/end2end_build_data.py
+9. Noted that the processed samples will be tokenized via the RoBERTa/BART sub-word tokenization.
 
+## Outputs for SAMSum Corpus
+See the model predictions of SAMSum test set in ./model_outputs/
 
 ## Citation
 

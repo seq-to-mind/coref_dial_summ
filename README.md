@@ -25,6 +25,10 @@ One implementation of the paper "Coreference-Aware Dialogue Summarization".
 2. You can read the samples in text format, then read the tokenized id/coreference information from each row.  
   For instance, each row in the file `train.source` contains information as below:  
   Text Tokens after BART tokenization ##### Token IDs after BART tokenization ##### Start Token ID of One Coreference-Linked Span ##### Target Token ID of One Coreference-Linked Span ##### Token Number after BART tokenization
+3. For our implementation, you will need to replace the original `generation_utils.py` and `modeling_bart.py` in the `Transformers` library, with the corresponding files in this repo.
+4. You can search the keyword 'coref' in our updated `generation_utils.py` and `modeling_bart.py` to see the implementation details.
+5. See running configurations in the `global_config.py` file.
+
 
 ## Generated Summaries for SAMSum Corpus
 See the predictions from the coreference-aware summarization model of SAMSum test set in `./model_outputs/`

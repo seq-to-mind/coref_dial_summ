@@ -851,7 +851,7 @@ class BartEncoder(BartPretrainedModel):
 
                 hidden_states = layer_outputs[0]
 
-                """ liu: adding coref information """
+                """ adding coref information """
                 if len(self.layers) > 6:
                     replace_layers = [8, 9, 10, 11]
                 else:

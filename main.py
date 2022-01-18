@@ -147,32 +147,26 @@ def evaluate_process(model, data_test_collection, train_epoch, best_score=None, 
     return best_score, current_print_score_str
 
 
+def read_data_from_file(tmp_file_prefix):
+    tmp_sample_list = list(zip(open(tmp_file_prefix + "source", encoding="utf-8").readlines(), open(tmp_file_prefix + "target", encoding="utf-8").readlines()))
+    tmp_sample_list = [[i[0].strip(), i[1].strip()] for i in tmp_sample_list]
+    return tmp_sample_list
+
+
 if __name__ == '__main__':
     setup_seed(100)
 
     if global_config.train:
-        print("Reading train data...")
-        train_file_prefix = global_config.data_path + "train."
-        train_sample_list = list(zip(open(train_file_prefix + "source", encoding="utf-8").readlines(), open(train_file_prefix + "target", encoding="utf-8").readlines()))
-        train_sample_list = [[i[0].strip(), i[1].strip()] for i in train_sample_list]
-
-        data_train = train_sample_list
-        print('Train Dataset size: %d' % (len(data_train)))
+        print("Reading training data...")
+        data_train = read_data_from_file(global_config.data_path + "train.")
+        print('Training Dataset size: %d' % (len(data_train)))
 
         print("Reading validation data...")
-        val_file_prefix = global_config.data_path + "val."
-        val_sample_list = list(zip(open(val_file_prefix + "source", encoding="utf-8").readlines(), open(val_file_prefix + "target", encoding="utf-8").readlines()))
-        val_sample_list = [[i[0].strip(), i[1].strip()] for i in val_sample_list]
-
-        data_valid = val_sample_list
+        data_valid = read_data_from_file(global_config.data_path + "val.")
         print('Validation Dataset size: %d' % (len(data_valid)))
 
     print("Reading test data...")
-    test_file_prefix = global_config.data_path + "test."
-    test_sample_list = list(zip(open(test_file_prefix + "source", encoding="utf-8").readlines(), open(test_file_prefix + "target", encoding="utf-8").readlines()))
-    test_sample_list = [[i[0].strip(), i[1].strip()] for i in test_sample_list]
-
-    data_test = test_sample_list
+    data_test = read_data_from_file(global_config.data_path + "test.")
     print('Test Dataset size: %d' % (len(data_test)))
 
     model = Model()

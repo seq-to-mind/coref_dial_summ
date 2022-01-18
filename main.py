@@ -49,7 +49,7 @@ def get_batches(data, batch_size):
     return batches
 
 
-def train_process(model, train_data):
+def train_process(model, train_data, valid_data, test_data):
     train_epoch = global_config.start_from_epoch
 
     best_score = {"epoch": 0, "all_loss": 0}
@@ -78,7 +78,8 @@ def train_process(model, train_data):
             if summary_steps % global_config.batch_loss_print_interval == 0:
                 print(train_epoch, summary_steps, "supervised loss", supervised_loss)
 
-        best_score, current_eval_score = evaluate_process(model, data_test, train_epoch, best_score)
+        best_score, current_eval_score = evaluate_process(model, valid_data, train_epoch, best_score)
+        # best_score, current_eval_score = evaluate_process(model, test_data, train_epoch, best_score)
 
         if running_log_name is None:
             running_log_name = "./running_log/" + time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime()) + "_" + str(running_random_number) + ".txt"
@@ -156,7 +157,15 @@ if __name__ == '__main__':
         train_sample_list = [[i[0].strip(), i[1].strip()] for i in train_sample_list]
 
         data_train = train_sample_list
-        print('Train Dataset sizes: %d' % (len(data_train)))
+        print('Train Dataset size: %d' % (len(data_train)))
+
+        print("Reading validation data...")
+        val_file_prefix = global_config.data_path + "val."
+        val_sample_list = list(zip(open(val_file_prefix + "source", encoding="utf-8").readlines(), open(val_file_prefix + "target", encoding="utf-8").readlines()))
+        val_sample_list = [[i[0].strip(), i[1].strip()] for i in val_sample_list]
+
+        data_valid = val_sample_list
+        print('Validation Dataset size: %d' % (len(data_valid)))
 
     print("Reading test data...")
     test_file_prefix = global_config.data_path + "test."
@@ -164,7 +173,7 @@ if __name__ == '__main__':
     test_sample_list = [[i[0].strip(), i[1].strip()] for i in test_sample_list]
 
     data_test = test_sample_list
-    print('Test Dataset sizes: %d' % (len(data_test)))
+    print('Test Dataset size: %d' % (len(data_test)))
 
     model = Model()
 
@@ -175,7 +184,7 @@ if __name__ == '__main__':
             load_model_path = global_config.load_model_path
             model.load_model(load_model_path)
 
-        train_process(model, data_train)
+        train_process(model, data_train, data_valid, data_test)
     else:
         load_model_path = global_config.load_model_path
         model.load_model(load_model_path)

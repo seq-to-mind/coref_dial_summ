@@ -1,5 +1,5 @@
 ## Introduction
-One implementation of the paper "Coreference-Aware Dialogue Summarization".
+One implementation of the paper "Coreference-Aware Dialogue Summarization" in SIGDIAL 2021 (Best Paper Award).
 
 ## Package Requirements
 1. pytorch==1.7.1
